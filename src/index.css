@@ -1,0 +1,183 @@
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f6f8;
+}
+
+.app{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  padding:20px;
+}
+
+.calendar-container{
+  width:min(95vw,1200px);
+  height:calc(100vh - 40px);
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.1);
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+}
+
+.calendar-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.calendar-header h2{
+  font-size:22px;
+  margin:0;
+}
+
+.calendar-header button{
+  padding:6px 12px;
+  font-size:18px;
+  cursor:pointer;
+  border:none;
+  border-radius:6px;
+  background:#e5e7eb;
+}
+
+.calendar-header button:hover{
+  background:#d1d5db;
+}
+
+.event-form{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:16px 0;
+}
+
+.event-form h3{
+  width:100%;
+  margin:0;
+}
+
+.event-form input{
+  flex:1;
+  min-width:120px;
+  padding:8px;
+  border:1px solid #ddd;
+  border-radius:6px;
+}
+
+.event-form button{
+  padding:8px 16px;
+  border:none;
+  border-radius:6px;
+  background:#4f46e5;
+  color:#fff;
+  cursor:pointer;
+}
+
+.event-form button:hover{
+  background:#4338ca;
+}
+
+.calendar-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  flex:1;
+}
+
+.weekday{
+  text-align:center;
+  font-weight:700;
+  font-size:14px;
+  padding:8px 0;
+  border-bottom:1px solid #e5e7eb;
+}
+
+.day-cell{
+  border:1px solid #eee;
+  padding:4px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  position:relative;
+}
+
+.day-cell.disabled{
+  background:#f9fafb;
+  color:#9ca3af;
+}
+
+.day-cell.today{
+  border:2px solid #4f46e5;
+  background:greenyellow;
+}
+
+.date-number{
+  font-size:13px;
+  font-weight:700;
+}
+
+.events{
+  margin-top:4px;
+  flex:1;
+  overflow-y:auto;
+}
+
+.event{
+  background:#4f46e5;
+  color:#fff;
+  padding:2px 4px;
+  border-radius:4px;
+  font-size:11px;
+  margin-bottom:3px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.event.conflict{
+  background:#dc2626;
+}
+
+@media(max-width:1024px){
+  .calendar-container{
+    height:auto;
+  }
+
+  .calendar-header h2{
+    font-size:20px;
+  }
+}
+
+@media(max-width:768px){
+  .app{
+    align-items:flex-start;
+  }
+
+  .calendar-container{
+    height:auto;
+    padding:12px;
+  }
+
+  .calendar-header{
+    flex-direction:column;
+  }
+
+  .calendar-grid{
+    grid-auto-rows:minmax(80px,auto);
+  }
+
+  .weekday{
+    font-size:12px;
+  }
+
+  .event{
+    font-size:10px;
+  }
+}
